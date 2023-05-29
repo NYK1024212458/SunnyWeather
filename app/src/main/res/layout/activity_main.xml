@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <ImageView
-        android:src="@drawable/bg_place"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bgimageview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:id="@+id/actionBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <EditText
-            android:background="@drawable/search_bg"
-            android:hint="输入地址"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/searchPlaceEdit"
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-        </EditText>
-
-    </FrameLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:visibility="gone"
-        android:id="@+id/search_recyclerview"
+    <fragment
+        android:name="com.kunkun.sunnyweather.ui.place.PlaceFragment"
+        android:id="@+id/placeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </fragment>
 
 
-
-
-</RelativeLayout>
+</FrameLayout>

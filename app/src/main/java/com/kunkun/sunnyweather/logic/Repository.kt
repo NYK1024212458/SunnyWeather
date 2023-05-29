@@ -19,7 +19,7 @@ object Repository {
                 //
                 Result.success(places)
             } else {
-                Result.failure(RuntimeException("response status is{placeResponse.status}"))
+                Result.failure(RuntimeException("response status is {placeResponse.status}"))
             }
 
 

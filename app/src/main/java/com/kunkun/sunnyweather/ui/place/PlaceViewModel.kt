@@ -24,4 +24,6 @@ class PlaceViewModel:ViewModel() {
         //保存搜索的数据
         searchPlace.value=query
     }
+    // 存放搜索缓存
+    val placeList = ArrayList<Place>()
 }

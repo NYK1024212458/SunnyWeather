@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.kunkun.sunnyweather'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.kunkun.sunnyweather"
@@ -64,8 +64,12 @@ dependencies {
     //纯引入协程
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     // 引入协程在Android中使用
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android :1.1.1'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android :1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
     //gson
     implementation 'com.google.code.gson:gson:2.10.1'
+
+    // okhttp官方的拦截器
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }
