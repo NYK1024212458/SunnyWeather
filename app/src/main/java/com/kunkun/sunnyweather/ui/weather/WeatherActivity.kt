@@ -1,14 +1,19 @@
 package com.kunkun.sunnyweather.ui.weather
 
+import android.content.Context
 import android.graphics.Color
+import android.hardware.input.InputManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.kunkun.sunnyweather.R
@@ -80,6 +85,33 @@ class WeatherActivity : AppCompatActivity() {
         binding.weatherLayoutRefrush.setOnRefreshListener {
               refrushWeather()
         }
+
+        //  点击打开侧滑
+        binding.weatherLayoutNow.navBtn.setOnClickListener {
+            binding.weatherDrawerLayout.openDrawer(GravityCompat.START)
+        }
+       //监听drawerLayout
+        binding.weatherDrawerLayout.addDrawerListener(object : DrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                // 关闭输入法  获取输入服务  转化为 InputMethodManager
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(drawerView.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+
+            override fun onDrawerStateChanged(newState: Int) {
+
+            }
+
+        })
+
 
 
     }

@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/weatherLayoutRefrush"
+    android:id="@+id/weatherDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView
-        android:id="@+id/weatherLayout"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/weatherLayoutRefrush"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/weatherLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/weatherLayoutNow"
+                    layout="@layout/now" />
+
+                <include
+                    android:id="@+id/weatherLayoutForecast"
+                    layout="@layout/forecast" />
+
+                <include
+                    android:id="@+id/weatherLayoutlifeIndex"
+                    layout="@layout/life_index" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        android:visibility="invisible">
+        android:layout_gravity="start">
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/drwaerLayoutFragment"
+            android:name="com.kunkun.sunnyweather.ui.place.PlaceFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
 
-            <include
-                android:id="@+id/weatherLayoutNow"
-                layout="@layout/now" />
-
-            <include
-                android:id="@+id/weatherLayoutForecast"
-                layout="@layout/forecast" />
-
-            <include
-                android:id="@+id/weatherLayoutlifeIndex"
-                layout="@layout/life_index" />
-        </LinearLayout>
-    </ScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </fragment>
+    </FrameLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

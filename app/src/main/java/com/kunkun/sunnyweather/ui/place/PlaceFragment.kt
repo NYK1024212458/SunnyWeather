@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.Visibility
+import com.kunkun.sunnyweather.MainActivity
 import com.kunkun.sunnyweather.R
 import com.kunkun.sunnyweather.databinding.FragmentPlaceBinding
 import com.kunkun.sunnyweather.ui.weather.WeatherActivity
@@ -48,7 +49,7 @@ class PlaceFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //  检查是否保存
-        if (viemModel.isSave()) {
+        if (activity is MainActivity && viemModel.isSave()) {
             val place = viemModel.getPlace()
             val intent = Intent(activity, WeatherActivity::class.java).apply {
                 putExtra("location_lng", place.location.lng)
