@@ -29,8 +29,8 @@ data class RealTimeResponse(
         val pressure: Double,
         val skycon: String,
         val status: String,
-        val temperature: Int,
-        val visibility: Int,
+        val temperature: Double,
+        val visibility: Double,
         val wind: Wind
     )
 
@@ -56,7 +56,7 @@ data class RealTimeResponse(
     )
 
     data class Wind(
-        val direction: Int,
+        val direction: Double,
         val speed: Double
     )
 

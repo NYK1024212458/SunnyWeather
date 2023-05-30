@@ -1,6 +1,7 @@
 package com.kunkun.sunnyweather.logic
 
 import androidx.lifecycle.liveData
+import com.kunkun.sunnyweather.logic.dao.PlaceDao
 import com.kunkun.sunnyweather.logic.model.DailyResponse
 import com.kunkun.sunnyweather.logic.model.Place
 import com.kunkun.sunnyweather.logic.model.Weather
@@ -15,6 +16,13 @@ import kotlinx.coroutines.coroutineScope
 //  最后记得使用emit()将数据发送出去,类似与调用了livedate的setvalue方法
 // }
 object Repository {
+    //  对dao进行封装
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+    fun getPlace() = PlaceDao.getPlace()
+    fun isSavePlace() = PlaceDao.isSave()
+    // daoceng封装end
+
+
     // 获取位置place
     fun searchPlace(query: String) = liveData(Dispatchers.IO) {
         val result = try {
@@ -46,15 +54,16 @@ object Repository {
                 val deferdailyWeatherResponse = async {
                     SunnyWeatherNetWork.getDailyWeather(lng, lat)
                 }
-               //调用awiat(0
-              val realTimeResponse=  deferrealTimeResponse.await()
-              val dailyWeatheResponser=  deferdailyWeatherResponse.await()
-                if (realTimeResponse.status=="ok"&&dailyWeatheResponser.status=="ok"){
+                //调用awiat(0
+                val realTimeResponse = deferrealTimeResponse.await()
+                val dailyWeatheResponser = deferdailyWeatherResponse.await()
+                if (realTimeResponse.status == "ok" && dailyWeatheResponser.status == "ok") {
                     //  组合数据Weather
-                    val  weather =Weather(realTimeResponse.result.realtime,dailyWeatheResponser.result.daily)
+                    val weather =
+                        Weather(realTimeResponse.result.realtime, dailyWeatheResponser.result.daily)
                     Result.success(weather)
-                }else{
-                    Result.failure(RuntimeException("realTimeResponse is status ${realTimeResponse.status} "+ "dailyWeatheResponser is status ${dailyWeatheResponser.status}"))
+                } else {
+                    Result.failure(RuntimeException("realTimeResponse is status ${realTimeResponse.status} " + "dailyWeatheResponser is status ${dailyWeatheResponser.status}"))
                 }
 
 

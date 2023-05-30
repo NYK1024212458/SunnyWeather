@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -72,4 +73,7 @@ dependencies {
 
     // okhttp官方的拦截器
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // mmkv
+    implementation 'com.tencent:mmkv:1.2.16'
 }

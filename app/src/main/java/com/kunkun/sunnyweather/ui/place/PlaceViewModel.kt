@@ -9,6 +9,14 @@ import com.kunkun.sunnyweather.logic.Repository
 import com.kunkun.sunnyweather.logic.model.Place
 
 class PlaceViewModel:ViewModel() {
+
+    //  place的保存的一些方法
+    fun savePlace(place: Place)=Repository.savePlace(place)
+    fun getPlace() = Repository.getPlace()
+    fun isSave() = Repository.isSavePlace()
+
+
+
     //创建一个livedata
     private val searchPlace =MutableLiveData<String>()
     //点击搜索place  对应的ff
@@ -26,4 +34,6 @@ class PlaceViewModel:ViewModel() {
     }
     // 存放搜索缓存
     val placeList = ArrayList<Place>()
+
+
 }

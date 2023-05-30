@@ -1,6 +1,8 @@
 package com.kunkun.sunnyweather.logic.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 
 /*
@@ -70,7 +72,7 @@ data class PlaceResponse(
     val query: String,
     val status: String
 )
-
+@Parcelize
 data class Place(
     @SerializedName("formatted_address")
     val address: String,
@@ -78,9 +80,10 @@ data class Place(
     val location: Location,
     val name: String,
     val place_id: String
-)
+):Parcelable
 
+@Parcelize
 data class Location(
     val lat: Double,
     val lng: Double
-)
+):Parcelable

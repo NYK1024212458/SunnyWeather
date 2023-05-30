@@ -12,11 +12,12 @@ import com.kunkun.sunnyweather.R
 import com.kunkun.sunnyweather.logic.model.Place
 import com.kunkun.sunnyweather.ui.weather.WeatherActivity
 
-class PlaceAdapter(private val fragment: Fragment,private val placeList: List<Place>):RecyclerView.Adapter<PlaceAdapter.ViewHolder> (){
-   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-         // 获取控件
-       val placename=itemView.findViewById<TextView>(R.id.placename)
-       val placeaddress=itemView.findViewById<TextView>(R.id.placeaddress)
+class PlaceAdapter(private val fragment: Fragment, private val placeList: List<Place>) :
+    RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // 获取控件
+        val placename = itemView.findViewById<TextView>(R.id.placename)
+        val placeaddress = itemView.findViewById<TextView>(R.id.placeaddress)
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -26,8 +27,11 @@ class PlaceAdapter(private val fragment: Fragment,private val placeList: List<Pl
             LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
         val viewHolder = ViewHolder(inflate)
         viewHolder.itemView.setOnClickListener {
+
             val absoluteAdapterPosition = viewHolder.absoluteAdapterPosition
             val place = placeList[absoluteAdapterPosition]
+            val placeFragment = fragment as PlaceFragment
+            placeFragment.viemModel.savePlace(place)
             val intent = Intent(parent.context, WeatherActivity::class.java).apply {
                 putExtra("location_lng", place.location.lng)
                 putExtra("location_lat", place.location.lat)
@@ -39,14 +43,16 @@ class PlaceAdapter(private val fragment: Fragment,private val placeList: List<Pl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       //获取postion的数据
-        val place= placeList[position]
+        //获取postion的数据
+        val place = placeList[position]
         //赋值给viewm
-        holder.placename.text=place.name
-        holder.placeaddress.text=place.address
+        holder.placename.text = place.name
+        holder.placeaddress.text = place.address
     }
 
     override fun getItemCount(): Int {
-       return placeList.size
+        return placeList.size
     }
+
+
 }
