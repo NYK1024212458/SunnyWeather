@@ -116,7 +116,7 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
-    private fun refrushWeather() {
+    public fun refrushWeather() {
         binding.weatherLayoutRefrush.isRefreshing=true
         weatherViewModel.refrushWeather(weatherViewModel.locationLng.toDouble(),weatherViewModel.locationLat.toDouble())
     }
