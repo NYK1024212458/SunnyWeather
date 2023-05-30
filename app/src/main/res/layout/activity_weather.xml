@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:visibility="invisible"
-    android:overScrollMode="never"
-    android:id="@+id/weatherLayout"
-    android:scrollbars="none"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weatherLayoutRefrush"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.weather.WeatherActivity">
-    <LinearLayout
-        android:orientation="vertical"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:id="@+id/weatherLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include
-            android:id="@+id/weatherLayoutNow"
-            layout="@layout/now"/>
-        <include
-            android:id="@+id/weatherLayoutForecast"
-            layout="@layout/forecast"/>
-        <include
-            android:id="@+id/weatherLayoutlifeIndex"
-            layout="@layout/life_index"/>
-    </LinearLayout>
-</ScrollView>
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/weatherLayoutNow"
+                layout="@layout/now" />
+
+            <include
+                android:id="@+id/weatherLayoutForecast"
+                layout="@layout/forecast" />
+
+            <include
+                android:id="@+id/weatherLayoutlifeIndex"
+                layout="@layout/life_index" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -56,6 +56,7 @@ class PlaceFragment : Fragment() {
                 putExtra("place_name", place.name)
             }
             startActivity(intent)
+            activity?.finish()
             return   //  不再执行后面的代码
         }
 

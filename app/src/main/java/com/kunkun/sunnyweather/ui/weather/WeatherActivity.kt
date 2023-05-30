@@ -10,11 +10,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.kunkun.sunnyweather.R
 import com.kunkun.sunnyweather.databinding.ActivityWeatherBinding
 import com.kunkun.sunnyweather.databinding.ForecastBinding
 import com.kunkun.sunnyweather.databinding.LifeIndexBinding
 import com.kunkun.sunnyweather.databinding.NowBinding
+import com.kunkun.sunnyweather.logic.Repository.refrushWeather
 import com.kunkun.sunnyweather.logic.model.Weather
 import com.kunkun.sunnyweather.logic.model.getSky
 import java.text.SimpleDateFormat
@@ -63,13 +65,28 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this, "无法获取天气信息", Toast.LENGTH_SHORT).show()
                 it.exceptionOrNull()?.printStackTrace()
             }
-
+             // 设置刷新结束
+            binding.weatherLayoutRefrush.isRefreshing=false
         })
 
         //调用刷新的
+//        weatherViewModel.refrushWeather(weatherViewModel.locationLng.toDouble(),weatherViewModel.locationLat.toDouble())
+
+
+        //设置刷新时候的颜色
+        binding.weatherLayoutRefrush.setColorSchemeResources(com.google.android.material.R.color.design_default_color_primary)
+          refrushWeather()
+        // 设置刷新 回调
+        binding.weatherLayoutRefrush.setOnRefreshListener {
+              refrushWeather()
+        }
+
+
+    }
+
+    private fun refrushWeather() {
+        binding.weatherLayoutRefrush.isRefreshing=true
         weatherViewModel.refrushWeather(weatherViewModel.locationLng.toDouble(),weatherViewModel.locationLat.toDouble())
-
-
     }
 
     private fun shoeWeatherUI(weather: Weather) {

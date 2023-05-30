@@ -76,4 +76,7 @@ dependencies {
 
     // mmkv
     implementation 'com.tencent:mmkv:1.2.16'
+
+    // api 28以上单独依赖下拉刷新库
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

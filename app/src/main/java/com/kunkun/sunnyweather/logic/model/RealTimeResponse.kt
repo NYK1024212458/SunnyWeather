@@ -36,7 +36,7 @@ data class RealTimeResponse(
 
     data class AirQuality(
         val aqi: Aqi,
-        val co: Int,
+        val co: Double,
         val description: Description,
         val no2: Int,
         val o3: Int,
