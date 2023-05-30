@@ -1,5 +1,6 @@
 package com.kunkun.sunnyweather.ui.weather
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,12 @@ class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWeatherBinding.inflate(layoutInflater)
+        // 设置 decorview 实现沉浸式体验  设置decorview的样式
+       window.decorView.systemUiVisibility=View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+
+        //设置statusbar的颜色  透明
+        window.statusBarColor=Color.TRANSPARENT
+
 
         setContentView(binding.root)
 //        setContentView(R.layout.activity_weather)

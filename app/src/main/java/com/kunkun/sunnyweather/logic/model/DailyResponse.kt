@@ -94,7 +94,7 @@ data class DailyResponse(
         val avg: Double,
         val date: String,
         val max: Double,
-        val min: Int,
+        val min: Double,
         val probability: Int
     )
 
