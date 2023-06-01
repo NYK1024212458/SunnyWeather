@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        kunweather {
+            storeFile file(KEY_PATH)
+            storePassword KEY_PASS
+            keyAlias  ALIAS_NAME
+            keyPassword  ALIAS_PASS
+        }
+    }
     namespace 'com.kunkun.sunnyweather'
     compileSdk 33
 
@@ -22,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.kunweather
         }
     }
     compileOptions {
